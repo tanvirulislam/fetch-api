@@ -15,28 +15,26 @@ class UserOverview extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: Text('User Overview')),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('ID: ' + userModel.id.toString()),
-                      Text('Name: ' + userModel.name.toString()),
-                      Text('Email: ' + userModel.email.toString()),
-                      Text('Address: ' + userModel.address!.city.toString()),
-                      Text('Phone: ' + userModel.phone.toString()),
-                      Text('Company: ' + userModel.company!.name.toString()),
-                    ],
-                  ),
+        body: Column(
+          children: [
+            Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('ID: ' + userModel.id.toString()),
+                    Text('Name: ' + userModel.name.toString()),
+                    Text('Email: ' + userModel.email.toString()),
+                    Text('Address: ' + userModel.address!.city.toString()),
+                    Text('Phone: ' + userModel.phone.toString()),
+                    Text('Company: ' + userModel.company!.name.toString()),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
