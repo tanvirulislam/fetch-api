@@ -42,24 +42,33 @@ class _SingleUserState extends State<SingleUser> {
                         );
                       },
                     )
-                  : Card(
-                      elevation: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(provider.singleUser!.id.toString()),
-                            Text(provider.singleUser!.name.toString()),
-                            Text(provider.singleUser!.email.toString()),
-                            Text(provider.singleUser!.company!.name.toString()),
-                            Text(provider.singleUser!.phone.toString()),
-                          ],
-                        ),
-                      ),
-                    )
+                  : Consumer<UserProvider>(
+                      builder: (context, value, child) {
+                        return Card(
+                          elevation: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(value.singleUser!.id.toString()),
+                                Text(provider.singleUser!.name.toString()),
+                                Text(provider.singleUser!.email.toString()),
+                                Text(provider.singleUser!.company!.name
+                                    .toString()),
+                                Text(provider.singleUser!.phone.toString()),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pop(context),
+          child: Icon(Icons.arrow_back),
         ),
       ),
     );

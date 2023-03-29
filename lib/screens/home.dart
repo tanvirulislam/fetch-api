@@ -1,5 +1,6 @@
 import 'package:api_provider_list_json/providers/user_provider.dart';
 import 'package:api_provider_list_json/screens/single_user.dart';
+import 'package:api_provider_list_json/screens/user_overview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:page_transition/page_transition.dart';
@@ -42,20 +43,31 @@ class Home extends StatelessWidget {
                       itemCount: provider.users.length,
                       itemBuilder: (BuildContext context, int index) {
                         var user = provider.users[index];
-                        return Card(
-                          elevation: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(user.id.toString()),
-                                Text(user.name.toString()),
-                                Text(user.email.toString()),
-                                Text(user.address!.city.toString()),
-                                Text(user.phone.toString()),
-                                Text(user.company!.name.toString()),
-                              ],
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                child: UserOverview(userModel: user),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
+                          },
+                          child: Card(
+                            elevation: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(user.id.toString()),
+                                  Text(user.name.toString()),
+                                  Text(user.email.toString()),
+                                  Text(user.address!.city.toString()),
+                                  Text(user.phone.toString()),
+                                  Text(user.company!.name.toString()),
+                                ],
+                              ),
                             ),
                           ),
                         );
