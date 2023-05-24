@@ -1,6 +1,5 @@
 import 'package:api_provider_list_json/providers/user_provider.dart';
 import 'package:api_provider_list_json/screens/home.dart';
-import 'package:api_provider_list_json/screens/single_user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
